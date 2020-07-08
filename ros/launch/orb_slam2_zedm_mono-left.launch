@@ -1,0 +1,43 @@
+<launch>
+  <node name="orb_slam2_zedm_left" pkg="orb_slam2_ros"
+      type="orb_slam2_ros_mono"
+      output="screen">
+
+       <remap from="/left/image_rect_color" to="/cam_front/left/image_rect_color" />
+
+       <param name="publish_pointcloud" type="bool" value="true" />
+      
+       <param name="publish_pose" type="bool" value="true" />
+       <param name="localize_only" type="bool" value="false" />
+       <param name="reset_map" type="bool" value="false" />
+       
+
+	<!-- static parameters -->
+       <param name="load_map" type="bool" value="false" />
+       <param name="map_file" type="string" value="map.bin" />
+       <!-- <param name="settings_file" type="string" value="$(find orb_slam2_ros)/orb_slam2/config/Zedm_mono_left.yaml" /> -->
+       <param name="voc_file" type="string" value="$(find orb_slam2_ros)/orb_slam2/Vocabulary/ORBvoc.txt" />
+
+       <param name="pointcloud_frame_id" type="string" value="map" />
+       <param name="camera_frame_id" type="string" value="camera_link" />
+
+       <param name="min_num_kf_in_map" type="int" value="5" />
+
+        <!-- Camera calibration parameters -->
+        <!--If the node should wait for a camera_info topic to take the camera calibration data-->
+       <param name="load_calibration_from_cam" type="bool" value="false" />
+       <!-- Camera calibration and distortion parameters (OpenCV) -->
+      <param name="camera_fx" type="double" value="615.6707153320312" />
+      <param name="camera_fy" type="double" value="615.962158203125" />
+      <param name="camera_cx" type="double" value="328.0010681152344" />
+      <param name="camera_cy" type="double" value="241.31031799316406" />
+       <!-- Camera calibration and distortion parameters (OpenCV) -->
+      <param name="camera_k1" type="double" value="0.0" />
+      <param name="camera_k2" type="double" value="0.0" />
+      <param name="camera_p1" type="double" value="0.0" />
+      <param name="camera_p2" type="double" value="0.0" />
+      <param name="camera_k3" type="double" value="0.0" />
+
+
+  </node>
+</launch>
